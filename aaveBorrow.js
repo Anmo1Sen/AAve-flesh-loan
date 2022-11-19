@@ -37,13 +37,16 @@ async function main() {
 async function repay(amount, daiAddress, lendingPool, account) {
     await approveErc20(daiAddress, lendingPool.address, amount, account)
     const repayTx = await lendingPool.repay(daiAddress, amount, 1, account)
+    // function repay(  address asset,  uint256 amount,uint256 rateMode,  address onBehalfOf )
     await repayTx.wait(1)
     console.log("Repaid!")
 }
 
 async function borrowDai(daiAddress, lendingPool, amountDaiToBorrow, account) {
-    const borrowTx = await lendingPool.borrow(daiAddress, amountDaiToBorrow, 1, 0, account)
-    await borrowTx.wait(1)
+    const borrowTx = await lendingPool.borrow(daiAddress, amountDaiToBorrow, 1, 0, account)   
+  //function borrow(  address asset, uint256 amount, uint256 interestRateMode, uint16 referralCode, address onBehalfOf  )
+
+    await borrowTx.wait(1)                                         
     console.log("You've borrowed!")
 }
 

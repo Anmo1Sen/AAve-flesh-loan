@@ -11,6 +11,7 @@ async function main() {
     await approveErc20(wethTokenAddress, lendingPool.address, AMOUNT, deployer)
     console.log("Depositing WETH...")
     await lendingPool.deposit(wethTokenAddress, AMOUNT, deployer, 0)
+                      //deposit(address asset, uint amount, address onBehalfOf, uint16 referralCode)
     console.log("Desposited!")
     // Getting your borrowing stats
     let { availableBorrowsETH, totalDebtETH } = await getBorrowUserData(lendingPool, deployer)
